@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "arti-portfolio",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-03-25",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    { "binding": "WORKER_SELF_REFERENCE", "service": "arti-portfolio" }
+  ],
+  "observability": { "enabled": true },
+  "workers_dev": false,
+  "ai": { "binding": "AI" },
+  "routes": [
+    { "pattern": "artikumari.me", "custom_domain": true },
+    { "pattern": "www.artikumari.me", "custom_domain": true }
+  ]
+
+  // If your Cloudflare login has MORE THAN ONE account, uncomment and set the
+  // account you want to deploy to (find it via `npx wrangler whoami`):
+  // "account_id": "<your-account-id>"
+
+  // The Gemini key is a SECRET — do NOT put it here. Set it with:
+  //   npx wrangler secret put GOOGLE_GENERATIVE_AI_API_KEY
+}

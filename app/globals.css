@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Professional: off-white canvas, deep forest green accent ── */
+  --color-ink: #f6f5f1; /* page background (soft off-white) */
+  --color-ink-2: #edece6; /* alt background */
+  --color-surface: #ffffff; /* crisp white card */
+  --color-surface-2: #f0efe9; /* recessed surface */
+  --color-text: #16191c; /* near-black */
+  --color-muted: #565a5d; /* slate grey */
+  --color-faint: #94968f; /* faint label */
+  --color-accent: #2f6a4f; /* deep forest green */
+  --color-accent-2: #8a6d3b; /* muted bronze (secondary) */
+  --color-line: rgba(22, 25, 28, 0.1);
+  --color-line-2: rgba(22, 25, 28, 0.15);
+
+  /* ── Type ── */
+  --font-display: var(--font-display-src), "Arial Black", sans-serif;
+  --font-body: var(--font-body-src), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono-src), ui-monospace, "SF Mono", monospace;
+
+  /* ── Motion ── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Professional atmosphere — subtle green wash */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(55rem 38rem at 8% -8%, rgba(47, 106, 79, 0.07), transparent 60%),
+    radial-gradient(45rem 36rem at 100% 0%, rgba(138, 109, 59, 0.045), transparent 55%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: #cdcdc8;
+  border-radius: 99px;
+  border: 3px solid var(--color-ink);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b9b9b3;
+}
+
+/* Display = Bricolage Grotesque, set bold + tight tracking */
+.font-display {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.4s var(--ease-out-expo);
+}
+.link-underline:hover {
+  background-size: 100% 1.5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Print styles for /resume (Cmd/Ctrl-P → Save as PDF) ── */
+@media print {
+  body::before,
+  body::after {
+    display: none !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-page {
+    box-shadow: none !important;
+  }
+}
