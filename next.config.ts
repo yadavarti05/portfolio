@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
 };
 
 // Makes Cloudflare bindings/vars available via `process.env` during `next dev`.
-initOpenNextCloudflareForDev();
+// Guard to dev only: during the production build this would open a remote proxy
+// session for the AI binding, which needs a workers.dev subdomain and is not
+// needed to build/deploy (the real AI binding is provided at runtime).
+if (process.env.NODE_ENV === "development") {
+  initOpenNextCloudflareForDev();
+}
 
 export default nextConfig;
