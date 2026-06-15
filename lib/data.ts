@@ -22,7 +22,7 @@ export const profile = {
   summary:
     "Computer Engineering graduate (2026) and published deep-learning researcher (IIT Delhi). I ship cross-platform Flutter apps for real clients and design neural networks for research — and I'm now going deep on Generative AI: LLMs, RAG, agents, and MCP.",
   location: "Rajkot, India",
-  email: "yadavarti2205@gmail.com",
+  email: "kumariarti072205@gmail.com",
   phone: "+91 79090 69577",
   // Links — leave "" to hide a link automatically.
   github: "https://github.com/yadavarti05",
