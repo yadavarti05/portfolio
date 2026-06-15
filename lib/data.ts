@@ -26,7 +26,7 @@ export const profile = {
   phone: "+91 79090 69577",
   // Links — leave "" to hide a link automatically.
   github: "https://github.com/yadavarti05",
-  linkedin: "https://linkedin.com/in/your-handle", // TODO
+  linkedin: "https://www.linkedin.com/in/arti-kumari-168972416",
   scholar: "", // TODO (optional) Google Scholar / ORCID
   resumeHref: "/resume", // built-in print-ready CV page
 
